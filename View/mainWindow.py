@@ -5,6 +5,7 @@ from View.canva import CanvaComponent
 class MainWindow(tk.Tk):
     def __init__(self):
         super().__init__()
+        self.configure(bg='white')
         self.chart_component = None
         self.canva_component = None
         self.title("Phone Format Window")
@@ -14,9 +15,14 @@ class MainWindow(tk.Tk):
         self.mainloop()
 
     def addComponent(self, canvaComponent, chartComponent):
+        clear_button = tk.Button(self, text="Clear", command=self.handle_clear_button)
+        clear_button.pack(pady=10, expand=True, fill=tk.BOTH)
+
         self.canva_component = canvaComponent
         self.canva_component.pack(pady=10, expand=True, fill=tk.BOTH)
 
         self.chart_component = chartComponent
         self.chart_component.pack(pady=10, expand=True, fill=tk.BOTH)
 
+    def handle_clear_button(self):
+        self.canva_component.clear()
