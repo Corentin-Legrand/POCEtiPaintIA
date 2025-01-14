@@ -12,14 +12,14 @@ class Controller:
     def update(self, grid):
 
         # affichage de la grille
-        print("Processing the grid...")
+        #print("Processing the grid...")
 
         # traitement de la grid et récupération des 10 nouvelles values
-        print("Computing the grid to get new values...")
+        #print("Computing the grid to get new values...")
         # values = [random.randint(1, 100) for _ in range(10)]
         values = self.compute_data(grid)
 
-        print("New values: ", values)
+        #print("New values: ", values)
         self.chart.change_values(values)
 
     def loadChart(self, chartComponent):

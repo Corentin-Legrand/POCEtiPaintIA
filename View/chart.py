@@ -13,8 +13,8 @@ class ChartComponent(tk.Frame):
 
     def create_bar_chart(self, values):
         self.ax.clear()
-        self.ax.bar(range(1, len(values) + 1), values)
-        self.ax.set_xticks(range(1, len(values) + 1))  # Set x-ticks to display all numbers
+        self.ax.bar(range(0, len(values)), values)
+        self.ax.set_xticks(range(0, len(values)))  # Set x-ticks to display all numbers
         self.ax.set_title('Estimation du modèle')
         self.canvas.draw()
 
