@@ -5,15 +5,17 @@ from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 class ChartComponent(tk.Frame):
     def __init__(self, parent, values):
         super().__init__(parent)
+        self.figure = Figure(figsize=(3.3, 3.3), dpi=100)
+        self.ax = self.figure.add_subplot(111)
+        self.canvas = FigureCanvasTkAgg(self.figure, self)
+        self.canvas.get_tk_widget().pack(fill=tk.BOTH, expand=True)
         self.create_bar_chart(values)
 
     def create_bar_chart(self, values):
-        figure = Figure(figsize=(3.6, 3.6), dpi=100)
-        ax = figure.add_subplot(111)
-        ax.bar(range(1, 11), values)
-        ax.set_xlabel('Bar Number')
-        ax.set_ylabel('Percentage')
-        ax.set_title('Bar Chart')
+        self.ax.clear()
+        self.ax.bar(range(1, len(values) + 1), values)
+        self.ax.set_title('Estimation du modèle')
+        self.canvas.draw()
 
-        canvas = FigureCanvasTkAgg(figure, self)
-        canvas.get_tk_widget().pack(fill=tk.BOTH, expand=True)
+    def change_values(self, values):
+        self.create_bar_chart(values)

@@ -5,18 +5,18 @@ from View.canva import CanvaComponent
 class MainWindow(tk.Tk):
     def __init__(self):
         super().__init__()
+        self.chart_component = None
+        self.canva_component = None
         self.title("Phone Format Window")
-        self.geometry("400x800")  # Adjusted dimensions to better fit the components
+        self.geometry("400x700")  # Adjusted dimensions to better fit the components
 
-        # Add the canvas at the top
-        self.canva_component = CanvaComponent(self)
+    def launch(self):
+        self.mainloop()
+
+    def addComponent(self, canvaComponent, chartComponent):
+        self.canva_component = canvaComponent
         self.canva_component.pack(pady=10, expand=True, fill=tk.BOTH)
 
-        # Add the chart at the bottom
-        values = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]  # Example values
-        self.chart_component = ChartComponent(self, values)
+        self.chart_component = chartComponent
         self.chart_component.pack(pady=10, expand=True, fill=tk.BOTH)
 
-if __name__ == "__main__":
-    app = MainWindow()
-    app.mainloop()
